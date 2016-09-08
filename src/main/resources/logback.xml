@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="DATASET" class="ch.qos.logback.core.FileAppender">
+        <file>${project.build.directory}/dataset.log</file>
+<!--        <append>false</append>
+        <prudent>false</prudent>-->
+        <encoder>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.dbunit" level="DEBUG" />
+
+    <logger name="learnrxjava.examples" level="DEBUG">
+        <appender-ref ref="DATASET"/>
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="DATASET" />
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
